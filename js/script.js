@@ -46,9 +46,13 @@ async function fetch_superHero_characters_by_name(name) {
     );
     const result = await response.json();
     console.log(result);
-    container.innerHTML = "";
+    if (result.data.results.length == 0) {
+      container.innerHTML = `<p class="h2"> Invalid character Name ! </p>`;
+      return;
+    }
+    container.innerHTML = ``;
     result.data.results.forEach((Hero) => {
-      if (Hero.name.includes(name)) {
+      if (Hero.name.toLowerCase().includes(name.toLowerCase())) {
         appendHero(Hero);
       }
     });
@@ -59,6 +63,7 @@ async function fetch_superHero_characters_by_name(name) {
 
 // a function which renders super heros list
 function render() {
+  container.innerHTML = "";
   fetch_superHero_characters().then((result) => {
     let data = result.data.results;
     data.forEach(appendHero);
@@ -171,6 +176,7 @@ document.addEventListener("click", (e) => {
 btn_search.addEventListener("click", (e) => {
   let value = input_bar.value;
   value = value[0].toUpperCase() + value.slice(1);
+  container.innerHTML = `<p class="h2"> Loading please wait... </p>`;
   fetch_superHero_characters_by_name(value);
 });
 
@@ -178,7 +184,6 @@ btn_search.addEventListener("click", (e) => {
 input_bar.addEventListener("keyup", (e) => {
   //  if the search bar value is empty render all super heros
   if (!input_bar.value) {
-    container.innerHTML = "";
     render();
   }
 });
