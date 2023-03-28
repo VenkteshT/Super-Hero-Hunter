@@ -52,7 +52,7 @@ This project is Super Hero Hunter App in which we use marvels official marvelapi
 
 ## 🔗 Links
 
-> ## Checkout the Website [Web Application](https://venktesht.github.io/Super-Hero-Hunter/)
+> ## Checkout the Website [Web Application](https://gilded-pavlova-c2bfee.netlify.app)
 
 ## <br/>
 
