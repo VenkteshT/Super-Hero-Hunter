@@ -1,0 +1,56 @@
+/* container */
+#favourites {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  row-gap: 30px;
+  padding: 20px;
+}
+
+/* character cards */
+.card {
+  border: solid 0.1em #1f1f1f;
+}
+
+.card-header {
+  max-height: 4vh;
+  border: none;
+  background-color: inherit;
+  text-align: start;
+  padding-top: 1vh;
+}
+
+.card-body i {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.4rem;
+}
+
+.card-footer {
+  border: none;
+}
+
+@media (max-width: 890px) {
+  .card-header {
+    overflow: hidden;
+  }
+  .card-body i {
+    font-size: 1.2em;
+  }
+  .card-body img {
+    scale: 1.1;
+    margin-top: 1vh;
+  }
+}
+
+@media (max-width: 700px) {
+  .card-body img {
+    scale: 1.3;
+    margin-top: 1vh;
+  }
+}
+
+.add-to-favourites {
+  color: blue;
+}
