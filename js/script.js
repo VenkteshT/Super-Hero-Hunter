@@ -164,6 +164,7 @@ document.addEventListener("click", (e) => {
     } else {
       let res = favourites.filter((el) => el.id !== id);
       favourites = res;
+      render();
     }
 
     // updating favourites list
