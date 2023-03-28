@@ -176,7 +176,7 @@ function createList(item, i) {
   classes.forEach((cls) => list.classList.add(cls));
   list.innerHTML = `
     <span>${i}) </span> 
-    <a href="${url ? url : "#"}"> ${item.title}</a>
+    <a href="${url ? url : "#"}" target="_blank"> ${item.title}</a>
   `;
   return list;
 }
