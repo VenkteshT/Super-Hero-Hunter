@@ -182,7 +182,7 @@ btn_search.addEventListener("click", (e) => {
 
 // on input change
 input_bar.addEventListener("keyup", (e) => {
-  //  if the search bar value is empty render all super heros
+  //  if the search bar value is empty render all super heros.
   if (!input_bar.value) {
     render();
   }
