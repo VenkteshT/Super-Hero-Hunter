@@ -114,7 +114,7 @@ function create_Card_for(character) {
           has_hero ? "add-to-favourites" : ""
         }"data-el-id=${id} data-el-name=${name} data-el-src=${src}></i>
         </div>
-        <a class="card-footer" href=${"./pages/info.html"} data-el-id=${id} data-el-name=${name} data-el-src=${src} >more information</a> 
+        <a class="card-footer" href="#" data-el-id=${id} data-el-name=${name} data-el-src=${src} >more info...</a> 
     `;
   return div;
 }
