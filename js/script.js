@@ -87,7 +87,7 @@ function create_Card_for(character) {
   // getting a favourites hero list
   favourites = JSON.parse(localStorage.getItem(storage_key));
 
-  // check if the current hero present in favourites list or not. 
+  // check if the current hero present in favourites list or not. if the page reloads
   //  if present then add to favourites list while rendering. i.e make icon to favourites
   let has_hero = favourites.find((hero) => hero.id == character.id);
 
@@ -136,7 +136,7 @@ document.addEventListener("click", (e) => {
     localStorage.setItem(about_character, JSON.stringify(obj));
   }
 
-  // addding and removeing form favourites  list functionality
+  // addding and removeing heros form favourites  list 
   // check if the target has required class or not.
   if (target.classList.contains("fa-heart")) {
     // getting favourites list
