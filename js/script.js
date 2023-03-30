@@ -176,7 +176,7 @@ document.addEventListener("click", (e) => {
 btn_search.addEventListener("click", (e) => {
   let value = input_bar.value;
   value = value[0].toUpperCase() + value.slice(1);
-  container.innerHTML = `<p class="h2"> Loading please wait... </p>`;
+  container.innerHTML = ``;
   fetch_superHero_characters_by_name(value);
 });
 
