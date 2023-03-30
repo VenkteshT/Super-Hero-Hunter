@@ -29,17 +29,7 @@ container.append(card);
 // function which creates card
 function createCard(character) {
   // bootstrap classes
-  const classes = [
-    "card",
-    "border",
-    "border-3",
-    "border-dark",
-    "p-3",
-    "rounded-2",
-    "col-11",
-    "col-lg-10",
-    "h-75",
-  ];
+  const classes = ["card", "border","border-3", "border-dark", "p-3", "rounded-2", "col-11", "col-lg-10", "h-75"];
 
   let card = document.createElement("div");
 
@@ -51,30 +41,20 @@ function createCard(character) {
             <h3>${character.name}</h3>
         </div>
         <div class="card-body d-flex flex-row gap-1 gap-lg-3">
-            <img src=${character.src} class="col-3 rounded-1 shadow img" alt=${
-    character.name
-  } />
+            <img src=${character.src} class="col-3 rounded-1 shadow img" alt=${character.name} />
             <div class="card border-0 col-8 col-lg-9">
                 <div class="card-header">
                   <ul class="list-group d-xs-none d-flex flex-row about">
-                  <li class="list-group-item ${
-                    cur_section == "comics" ? "active" : ""
-                  }" id="comics">
+                  <li class="list-group-item ${ cur_section == "comics" ? "active" : "" }" id="comics">
                    Comics
                   </li>
-                   <li class="list-group-item ${
-                     cur_section == "events" ? "active" : ""
-                   }" id="events">
+                   <li class="list-group-item ${ cur_section == "events" ? "active" : "" }" id="events">
                     Events
                    </li>
-                   <li class="list-group-item ${
-                     cur_section == "stories" ? "active" : ""
-                   }" id="stories">
+                   <li class="list-group-item ${ cur_section == "stories" ? "active" : "" }" id="stories">
                     Stories
                    </li>
-                   <li class="list-group-item ${
-                     cur_section == "series" ? "active" : ""
-                   }" id="series">
+                   <li class="list-group-item ${ cur_section == "series" ? "active" : "" }" id="series">
                     Series
                    </li>
                   </ul>
@@ -92,12 +72,14 @@ function createCard(character) {
   return card;
 }
 
-// dynamically fetching the  data
+// dynamically fetching the data when the user clicks on any section. i.e comics,stories,events,etc.. 
 
 document.addEventListener("click", (e) => {
+  
+   // functionality for adding active class to present section if the page reloads.   
   // check if the target has the required class or not
-
   if (e.target.classList.contains("list-group-item")) {
+    
     // content section
     let content = document.querySelector("#content");
 
@@ -123,7 +105,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-//
+// fetch the section information
 function fetch_and_render(attrib) {
   // dynamically fetching the data from api
   fetch(
