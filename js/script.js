@@ -15,9 +15,10 @@ let favourites;
 // check if there are heros present in favourites list.
 let has_favourites = JSON.parse(localStorage.getItem(storage_key));
 
-// if no favourites hero in list set the localstorege to empty list;
+// if no favourites hero in list initilize the localstorege to empty list;
 if (!has_favourites) localStorage.setItem(storage_key, JSON.stringify([]));
 
+// initilizing an empty obj which stores character information
 localStorage.setItem(about_character, JSON.stringify({}));
 
 // elements
@@ -86,7 +87,8 @@ function create_Card_for(character) {
   // getting a favourites hero list
   favourites = JSON.parse(localStorage.getItem(storage_key));
 
-  // checking if the current hero present in favourites list or not
+  // check if the current hero present in favourites list or not. 
+  //  if present then add to favourites list while rendering. i.e make icon to favourites
   let has_hero = favourites.find((hero) => hero.id == character.id);
 
   // careteing an array of bootstrap classes
@@ -96,10 +98,7 @@ function create_Card_for(character) {
   const div = document.createElement("div");
   classes.forEach((cls) => div.classList.add(cls));
 
-  let src =
-    character.thumbnail.path +
-    "/portrait_fantastic." +
-    character.thumbnail.extension;
+  let src = character.thumbnail.path + "/portrait_fantastic." + character.thumbnail.extension;
   let link = character.urls[0].url;
   let id = character.id;
   let name = character.name.split(" ").join("_");
@@ -107,12 +106,8 @@ function create_Card_for(character) {
   div.innerHTML = `
         <h5 class="h5 card-header mt-2 mr-2">${character.name}</h5>
         <div class="card-body">
-        <img src=${src} alt=${
-    character.name
-  } class="shadow col-12 h-100 rounded-1"/>
-        <i class="fa fa-heart ${
-          has_hero ? "add-to-favourites" : ""
-        }"data-el-id=${id} data-el-name=${name} data-el-src=${src}></i>
+        <img src=${src} alt=${character.name} class="shadow col-12 h-100 rounded-1"/>
+        <i class="fa fa-heart ${has_hero ? "add-to-favourites" : "" }"data-el-id=${id} data-el-name=${name} data-el-src=${src}></i>
         </div>
         <a class="card-footer" href="./pages/info.html" data-el-id=${id} data-el-name=${name} data-el-src=${src} >more info...</a> 
     `;
@@ -121,7 +116,8 @@ function create_Card_for(character) {
 
 // adding and removeing characters from favourites list through event deligation
 document.addEventListener("click", (e) => {
-  // updateing the about character functionality
+  
+  //more information about character functionality
   const target = e.target;
   // check if current target has required class or not
   if (target.classList.contains("card-footer")) {
@@ -136,7 +132,7 @@ document.addEventListener("click", (e) => {
       src,
     };
 
-    // update about character
+    // update about character obj in localstorage
     localStorage.setItem(about_character, JSON.stringify(obj));
   }
 
